@@ -1,197 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Finance Task Selector</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="bg-gray-100 min-h-screen">
-    <nav class="bg-blue-500 text-white py-4">
-      <ul class="flex justify-center space-x-4">
-        <li><a href="index.html" class="hover:underline">Main</a></li>
-        <li><a href="task.html" class="hover:underline">Task</a></li>
-        <li><a href="finance.html" class="hover:underline">Finance</a></li>
-        <li><a href="daily.html" class="hover:underline">Report</a></li>
-      </ul>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMYSystem - Smart Management Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white py-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold">Welcome to DMYSystem</h1>
+            <p class="text-lg">A Smart Management Solution for Modern Businesses</p>
+        </div>
+    </header>
 
-    <div class="flex items-center justify-center mt-6">
-      <div class="bg-white p-6 w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          Finance Task Manager
-        </h2>
-        <form id="financeForm" class="space-y-4">
-          <!-- select Hour -->
-          <div>
-            <label for="hour" class="block text-sm font-medium text-gray-700"
-              >Select Hour</label
-            >
-            <select
-              id="hour"
-              name="hour"
-              class="mt-1 block w-full border border-gray-300 focus:outline-none py-2 px-4 border-gray-300 bg-gray-100"
-            >
-              <!-- Options from 1 to 24 -->
-              <option value="" disabled selected>Select an hour</option>
-              <script>
-                for (let i = 1; i <= 24; i++) {
-                  document.write(
-                    `<option value="${i}">${i - 1}th - ${i}th</option>`
-                  );
-                }
-              </script>
-            </select>
-          </div>
-          <!-- Select Task -->
-          <div>
-            <label for="task" class="block text-sm font-medium text-gray-700"
-              >Select Task</label
-            >
-            <select
-              id="task"
-              name="task"
-              class="mt-1 block w-full border border-gray-300 focus:outline-none py-2 px-4 border-gray-300 bg-gray-100"
-              placeholder="Search for a task"
-            >
-              <option value="budgeting">Budgeting</option>
-              <option value="tracking">Expense Tracking</option>
-              <option value="investment">Investment</option>
-            </select>
-          </div>
+    <section class="container mx-auto my-10 px-6">
+        <div class="bg-white p-8 shadow-lg rounded-lg">
+            <h2 class="text-2xl font-semibold text-blue-600">About DMYSystem</h2>
+            <p class="mt-4 text-gray-700">DMYSystem is an advanced digital management platform designed to streamline and automate business processes. With a user-friendly interface and powerful features, it helps businesses improve efficiency and maximize productivity.</p>
+        </div>
+    </section>
 
-          <!-- Radio Buttons -->
-          <div class="mb-4">
-            <label class="block mb-2">
-              <input
-                type="radio"
-                name="finance"
-                id="no-finance"
-                class="mr-2"
-                onclick="handleFinanceChange()"
-              />
-              No Finance
-            </label>
-            <label class="block mb-2">
-              <input
-                type="radio"
-                name="finance"
-                id="expense"
-                class="mr-2"
-                onclick="handleFinanceChange()"
-              />
-              Expense
-            </label>
-            <label class="block">
-              <input
-                type="radio"
-                name="finance"
-                id="input"
-                class="mr-2"
-                onclick="handleFinanceChange()"
-              />
-              Input
-            </label>
-          </div>
-
-          <!-- Additional Input Fields -->
-          <div id="finance-details" class="hidden">
-            <div class="mb-4">
-              <label
-                for="channel"
-                class="block text-sm font-medium text-gray-600"
-                >Select Channel</label
-              >
-              <select
-                id="channel"
-                name="channel"
-                class="mt-1 block w-full border border-gray-300 focus:outline-none py-2 px-4 border-gray-300 bg-gray-100"
-              >
-                <option value="" disabled selected>Select a channel</option>
-                <option value="bank">Bank</option>
-                <option value="cash">Cash</option>
-                <option value="credit-card">Credit Card</option>
-              </select>
+    <section class="container mx-auto my-10 px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 shadow-lg rounded-lg text-center">
+                <h3 class="text-xl font-semibold text-blue-600">Efficient Workflow</h3>
+                <p class="mt-2 text-gray-700">Automate repetitive tasks and streamline operations effortlessly.</p>
             </div>
-            <div>
-              <label for="value" class="block text-sm font-medium text-gray-600"
-                >Enter Value</label
-              >
-              <input
-                type="number"
-                id="value"
-                name="value"
-                placeholder="Enter amount"
-                class="mt-1 block w-full border border-gray-300 focus:outline-none py-2 px-4 border-gray-300 bg-gray-100"
-              />
+            <div class="bg-white p-6 shadow-lg rounded-lg text-center">
+                <h3 class="text-xl font-semibold text-blue-600">User-Friendly</h3>
+                <p class="mt-2 text-gray-700">An intuitive design ensuring ease of use for all users.</p>
             </div>
-          </div>
+            <div class="bg-white p-6 shadow-lg rounded-lg text-center">
+                <h3 class="text-xl font-semibold text-blue-600">Secure & Reliable</h3>
+                <p class="mt-2 text-gray-700">Data security and reliability are our top priorities.</p>
+            </div>
+        </div>
+    </section>
 
-          <script>
-            function handleFinanceChange() {
-              const noFinance = document.getElementById("no-finance").checked;
-              const financeDetails = document.getElementById("finance-details");
-
-              if (noFinance) {
-                // Hide finance details if "No Finance" is selected
-                financeDetails.classList.add("hidden");
-              } else {
-                // Show finance details if "Expense" or "Input" is selected
-                financeDetails.classList.remove("hidden");
-              }
-            }
-          </script>
-          <!-- Select Finance Channel -->
- 
-
-          <!-- Note -->
-          <div>
-            <label for="note" class="block text-sm font-medium text-gray-700"
-              >Note</label
-            >
-            <textarea
-              id="note"
-              name="note"
-              rows="3"
-              class="mt-1 block w-full border border-gray-300 focus:outline-none py-2 px-4 border-gray-300 bg-gray-100"
-              placeholder="Add a note..."
-            ></textarea>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="flex justify-center">
-            <button
-              type="submit"
-              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="container mx-auto p-6">
-      <h1 class="text-2xl font-bold text-center mb-6">24 Hour Cards</h1>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
-      >
-        <!-- Hour Cards -->
-        <script>
-          for (let i = 1; i <= 24; i++) {
-            document.write(`
-                <div class="bg-white p-4 ">
-                  <h3 class="text-xl font-semibold text-gray-700 border-b pb-2 mb-2">Hour ${i}</h3>
-                  <p class="text-sm text-gray-500 border-b py-2">Mourler Porjaybritto dhormo studied</p>
-                  <p class="text-sm text-gray-500 border-b py-2">Stady, Work</p>
-                  <p class="text-sm text-gray-500 pt-2">Moneybag input: 20tk</p>
-                </div>
-              `);
-          }
-        </script>
-      </div>
-    </div>
-  </body>
+    <footer class="bg-blue-600 text-white text-center py-4">
+        <p>&copy; 2025 DMYSystem. All rights reserved.</p>
+    </footer>
+</body>
 </html>
