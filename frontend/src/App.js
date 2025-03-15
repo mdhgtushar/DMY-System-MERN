@@ -1,26 +1,41 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 
-import Main from './pages/Main';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import VisionBoard from './pages/VisionBoard';
-import EditVisionBoard from './pages/EditVisionBoard';
-import FinanceChannelList from './pages/FinanceChannelList';
-import FinanceChannelCreate from './pages/CreateFinanceChannel';
-import TaskList from './pages/TaskList';
-import CreateTask from './pages/CreateTask';
-import EditFinanceChannel from './pages/EditFinanceChannel';
-import CreateDailyData from './pages/CreateDailyData';
-import ViewDailyData from './pages/ViewDailyData';
-import FinanceView from './pages/FinanceView';
-import Dashboard from './pages/Dashboard';
-import ViewTask from "./pages/ViewTask"
-import ViewFinanceChannel from './pages/ViewFinanceChannel'; 
-import EditTask from './pages/EditTask';
+//components
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+//main 
+import Main from './features/main/Main';
+
+//auth
+import Login from './features/auth/Login';
+import Signup from './features/auth/Signup';
+
+//vision
+import VisionBoard from './features/vision/VisionBoard';
+import EditVisionBoard from './features/vision/EditVisionBoard';
+
+//finance
+import FinanceChannelList from './features/financeChannel/FinanceChannelList';
+import FinanceChannelCreate from './features/financeChannel/CreateFinanceChannel';
+import ViewFinanceChannel from './features/financeChannel/ViewFinanceChannel'; 
+import EditFinanceChannel from './features/financeChannel/EditFinanceChannel';
+import FinanceView from './features/finance/FinanceView'; 
+
+//task
+import TaskList from './features/task/TaskList';
+import CreateTask from './features/task/CreateTask';
+import EditTask from './features/task/EditTask';
+import ViewTask from "./features/task/ViewTask";
+
+//daily
+import CreateDailyData from './features/dailyData/CreateDailyData';
+import ViewDailyData from './features/dailyData/ViewDailyData';
+
+//dashboard
+import Dashboard from './features/dashboard/Dashboard';
 
 const App = () => {
   return (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import api from '../api/axios';
+import api from '../../api/axios';
 
 const ViewTask = () => {
   const { id } = useParams();

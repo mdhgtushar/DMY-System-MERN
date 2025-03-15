@@ -1,6 +1,6 @@
 // src/components/Signup.js
 import React, { useState } from "react";
-import api from "../api/axios";
+import api from "../../api/axios";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");

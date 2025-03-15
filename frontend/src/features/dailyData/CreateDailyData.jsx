@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../api/axios";
+import api from "../../api/axios";
 
 const CreateDailyData = () => {
   const today = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' }).split(',')[0].split('/').reverse().join('-');

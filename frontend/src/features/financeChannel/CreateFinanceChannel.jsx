@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../api/axios'; // Make sure to import your axios API instance
+import api from '../../api/axios'; // Make sure to import your axios API instance
 import { Link } from 'react-router-dom';
 
 const CreateFinanceChannel = () => {

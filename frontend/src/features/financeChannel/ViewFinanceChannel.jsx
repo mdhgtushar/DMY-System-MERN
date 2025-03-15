@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import api from '../api/axios'; // Assuming you've set up axios API calls in this file
+import api from '../../api/axios'; // Assuming you've set up axios API calls in this file
 
 const ViewFinanceChannel = () => {
   const { id } = useParams(); // Extract the channel id from URL

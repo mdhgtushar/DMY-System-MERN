@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import api from "../api/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import api from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
-const EditTask = () => {
+const CreateTask = () => {
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
@@ -11,28 +11,13 @@ const EditTask = () => {
     priority: "low",
     hoursNeeded: "",
     dueDate: "",
-    executionDate: "", 
+    executionDate: "",
+    user: "",
   });
 
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const { id } = useParams(); // Getting task id from the URL
   const navigate = useNavigate();
-
-  // Fetch task data when the component mounts or when task ID changes
-  useEffect(() => {
-    const fetchTaskData = async () => {
-      try {
-        const response = await api.get(`/tasks/${id}`);
-        setTaskData(response.data);
-      } catch (error) {
-        setError("❌ Failed to load task data");
-        console.error(error);
-      }
-    };
-    
-    fetchTaskData();
-  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,13 +31,24 @@ const EditTask = () => {
     e.preventDefault();
 
     try {
-      await api.put(`/tasks/${id}`, taskData);
-      setSuccessMessage("✅ Task updated successfully!");
+      await api.post("/tasks", taskData);
+      setSuccessMessage("✅ Task created successfully!");
       setError("");
+
+      setTaskData({
+        title: "",
+        description: "",
+        status: "pending",
+        type: "todo",
+        priority: "low",
+        hoursNeeded: 0,
+        dueDate: "",
+        executionDate: "", 
+      });
 
       setTimeout(() => navigate("/task-list"), 2000);
     } catch (error) {
-      setError("❌ Failed to update task");
+      setError("❌ Failed to create task");
       setSuccessMessage("");
       console.error(error);
     }
@@ -60,7 +56,7 @@ const EditTask = () => {
 
   return (
     <div className="container mx-auto bg-white p-8 rounded-xl shadow-xl">
-      <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Edit Task ✨</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Create New Task ✨</h2>
 
       {error && (
         <div className="mb-4 p-4 text-red-700 bg-red-100 border border-red-500 rounded-md">
@@ -187,7 +183,7 @@ const EditTask = () => {
             type="submit"
             className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-300"
           >
-            Update Task ✨
+            Create Task ✨
           </button>
         </div>
       </form>
@@ -195,4 +191,4 @@ const EditTask = () => {
   );
 };
 
-export default EditTask;
+export default CreateTask;
