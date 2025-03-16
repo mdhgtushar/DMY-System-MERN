@@ -57,6 +57,7 @@ const Navbar = () => {
                     { path: "/vision-board", label: "🎯 Vision" },
                     { path: "/task-list", label: "✅ Tasks" },
                     { path: "/finance-channel-list", label: "💰 Finance" },
+                    { path: "/finance-create", label: "📊 Finance Create" },
                     { path: "/finance-view", label: "📊 Finance View" },
                     { path: "/view-daily-data", label: "📜 View Data" },
                   ].map((item) => (

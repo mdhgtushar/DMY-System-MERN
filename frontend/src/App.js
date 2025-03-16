@@ -23,6 +23,7 @@ import FinanceChannelCreate from './features/financeChannel/CreateFinanceChannel
 import ViewFinanceChannel from './features/financeChannel/ViewFinanceChannel'; 
 import EditFinanceChannel from './features/financeChannel/EditFinanceChannel';
 import FinanceView from './features/finance/FinanceView'; 
+import CreateFinance from './features/finance/CreateFinance'; 
 
 //task
 import TaskList from './features/task/TaskList';
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/finance-channel-list" element={<FinanceChannelList />} />
         <Route path="/finance-channel-view/:id" element={<ViewFinanceChannel />} />
         <Route path="/finance-view" element={<FinanceView />} />
+        <Route path="/finance-create" element={<CreateFinance />} />
         <Route path="/task-create" element={<CreateTask />} />
         <Route path="/task-edit/:id" element={<EditTask />} />
         <Route path="/task-list" element={<TaskList />} />
