@@ -25,7 +25,7 @@ const Navbar = () => {
             </div>
 
             {/* Menu Items */}
-            <ul className="flex space-x-4 justify-center md:justify-start">
+            <ul className="flex space-x-4 justify-center md:justify-start text-sm">
               {!token ? (
                 <>
                   <li>

@@ -1,52 +1,62 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api/axios";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVision, updateVision } from "./visionSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Toastify CSS
 
 const EditVisionBoard = () => {
-  const [visionBoard, setVisionBoard] = useState("");
-  const [updatedVisionBoard, setUpdatedVisionBoard] = useState("");
-  const [message, setMessage] = useState(""); // To store the message
-  const [messageType, setMessageType] = useState(""); // To determine message type: success or error
+  const dispatch = useDispatch();
+  const { vision, status, error } = useSelector((state) => state.vision);
+  const [editData, setEditData] = useState("");
 
   useEffect(() => {
-    getVisionBoard();
-  }, []);
-
-  // Fetch the current vision board content
-  const getVisionBoard = async () => {
-    try {
-      const response = await api.get("/vision");
-      setVisionBoard(response.data.vision); // Assuming response.data.vision contains the current HTML content
-      setUpdatedVisionBoard(response.data.vision); // Set initial value in the input
-    } catch (error) {
-      setMessage("Error fetching vision board.");
-      setMessageType("error");
-      console.log(error);
+    if (status === "idle") {
+      dispatch(fetchVision());
     }
-  };
+    if (status === "success") {
+      setEditData(vision);
+    }
+  }, [dispatch, status, vision]);
 
-  // Handle the change in the input field
-  const handleChange = (e) => {
-    setUpdatedVisionBoard(e.target.value);
-  };
-
-  // Submit the updated vision board content
+  // ✅ Form Submit Function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await api.put("/vision", { vision: updatedVisionBoard });
-      setMessage("Vision board updated successfully!");
-      setMessageType("success");
-      console.log("Vision board updated:", response);
-    } catch (error) {
-      setMessage("Error updating vision board.");
-      setMessageType("error");
-      console.log(error);
+    const result = await dispatch(updateVision({vision: editData})); // Redux thunk action call
+
+    if (updateVision.fulfilled.match(result)) {
+      // 🔹 Success হলে Toast দেখাবে
+      toast.success("Vision Board updated successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "colored",
+      });
+    } else if (updateVision.rejected.match(result)) {
+      // 🔹 Error হলে Toast দেখাবে
+      toast.error("Failed to update Vision Board!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "dark",
+      });
     }
   };
+
+  if (status === "loading") {
+    return <div className="text-center">Loading...</div>;
+  }
 
   return (
     <div className="container mx-auto my-10">
+      <ToastContainer /> {/* 🔹 Toast Container এখানে রাখুন */}
+      
       <div className="mb-5">
         <Link
           to="/vision-board"
@@ -55,22 +65,13 @@ const EditVisionBoard = () => {
           View Vision Board
         </Link>
       </div>
+      
       <h2>Edit Vision Board</h2>
-      {/* Show message if available */}
-      {message && (
-        <div
-          className={`mb-4 p-3 text-white rounded-md ${
-            messageType === "success" ? "bg-green-500" : "bg-red-500"
-          }`}
-        >
-          {message}
-        </div>
-      )}
-
+      
       <form onSubmit={handleSubmit} className="mb-4">
         <textarea
-          value={updatedVisionBoard}
-          onChange={handleChange}
+          value={editData}
+          onChange={(e) => setEditData(e.target.value)}
           rows="10"
           cols="50"
           className="border border-gray-300 rounded-md p-2 w-full"

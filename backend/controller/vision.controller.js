@@ -13,6 +13,9 @@ const getVision = (req, res) => {
 const updateVision = async (req, res) => {
     try {
         const { vision } = req.body;
+        if( vision === null || vision === "" ||  vision === undefined){
+            return res.status(400).json({error: "Vision board content is required"});
+        }
         const user = await User.findById(req.user.id);
         user.vision_bord = vision;
         await user.save();
