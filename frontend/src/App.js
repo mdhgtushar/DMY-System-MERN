@@ -37,6 +37,13 @@ import ViewDailyData from './features/dailyData/ViewDailyData';
 
 //dashboard
 import Dashboard from './features/dashboard/Dashboard';
+import ProjectList from './features/project/ProjectList';
+import ProjectView from './features/project/ProjectView';
+import FeatureDetails from './features/project/FeatureDetails';
+import ProjectCreate from './features/project/ProjectCreate';
+import ProjectEdit from './features/project/ProjectEdit';
+import FeatureCreate from './features/project/FeatureCreate';
+import FeatureEdit from './features/project/FeatureEdit';
 
 const App = () => {
   return (
@@ -62,6 +69,13 @@ const App = () => {
         <Route path="/task-view/:id" element={<ViewTask />} />
         <Route path="/daily-data-create" element={<CreateDailyData />} />
         <Route path="/view-daily-data" element={<ViewDailyData />} />
+        <Route path="/projects" element={<ProjectList />} />
+        <Route path="/projects/:id" element={<ProjectView />} />
+        <Route path="/projects/create" element={<ProjectCreate />} />
+        <Route path="/projects/features/:id" element={<FeatureDetails />} />
+        <Route path="/projects/features/create/:id" element={<FeatureCreate />} />
+        <Route path="/projects/edit/:id" element={<ProjectEdit />} />
+        <Route path="/projects/features/edit/:id" element={<FeatureEdit />} /> 
       </Routes>
      </div>
       <Footer/>

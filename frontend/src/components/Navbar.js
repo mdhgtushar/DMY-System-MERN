@@ -56,16 +56,17 @@ const Navbar = () => {
                     { path: "/daily-data-create", label: "📅 Daily Data" },
                     { path: "/vision-board", label: "🎯 Vision" },
                     { path: "/task-list", label: "✅ Tasks" },
+                    { path: "/projects", label: "📋 Projects" },
                     { path: "/finance-channel-list", label: "💰 Finance" },
-                    { path: "/finance-create", label: "📊 Finance Create" },
-                    { path: "/finance-view", label: "📊 Finance View" },
-                    { path: "/view-daily-data", label: "📜 View Data" },
+                    // { path: "/finance-create", label: "📊 Finance Create" },
+                    { path: "/finance-view", label: "📊 Finance" },
+                    // { path: "/view-daily-data", label: "📜 View Data" },
                   ].map((item) => (
                     <li key={item.path}>
                       <NavLink
                         to={item.path}
                         className={({ isActive }) => 
-                          `border px-4 py-2 rounded transition ${isActive ? "bg-blue-900" : "hover:bg-blue-900"}`
+                          `border border-2 border-gray-200 px-4 py-2 rounded transition ${isActive ? "bg-blue-900" : "hover:bg-blue-900"}`
                         }
                       >
                         {item.label}
